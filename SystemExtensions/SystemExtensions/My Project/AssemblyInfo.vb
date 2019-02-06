@@ -8,10 +8,10 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("SystemExtensions")>
-<Assembly: AssemblyDescription("SystemExtensions")>
+<Assembly: AssemblyTitle("kSystemExtensions")>
+<Assembly: AssemblyDescription("kSystemExtensions")>
 <Assembly: AssemblyCompany("KornSW")>
-<Assembly: AssemblyProduct("SystemExtensions")>
+<Assembly: AssemblyProduct("kSystemExtensions")>
 <Assembly: AssemblyCopyright("KornSW")>
 <Assembly: AssemblyTrademark("KornSW")>
 

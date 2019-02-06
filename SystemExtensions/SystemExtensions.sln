@@ -3,12 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SystemExtensions", "SystemExtensions\SystemExtensions.vbproj", "{7330EAC6-5C18-427C-9B4E-BAC2B1546A58}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "kSystemExtensions", "SystemExtensions\kSystemExtensions.vbproj", "{7330EAC6-5C18-427C-9B4E-BAC2B1546A58}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1F5ED9F0-A265-466A-88C0-46EF1653102A}"
 	ProjectSection(SolutionItems) = preProject
-		..\Pack-SystemExtensions-Release.bat = ..\Pack-SystemExtensions-Release.bat
-		..\SystemExtensions.nuspec = ..\SystemExtensions.nuspec
+		..\kSystemExtensions.nuspec = ..\kSystemExtensions.nuspec
+		..\Pack-kSystemExtensions-Release.bat = ..\Pack-kSystemExtensions-Release.bat
 	EndProjectSection
 EndProject
 Global
