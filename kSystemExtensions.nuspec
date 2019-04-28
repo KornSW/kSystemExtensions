@@ -2,14 +2,14 @@
 <package >
   <metadata>
     <id>kSystemExtensions</id>
-    <version>2.1.0-beta</version>
+    <version>2.2.0</version>
     <title>K System Extensions</title>
     <authors>KornSW</authors>
     <owners>KornSW</owners>
     <!-- https://spdx.org/licenses/ -->
     <license type="expression">GPL-3.0-only</license>
     <projectUrl>https://github.com/KornSW/kSystemExtensions</projectUrl>
-    <!--<iconUrl>https://github.com/KornSW/kSystemExtensions/Master/kSystemExtensions.Logo.png</iconUrl>-->
+    <iconUrl>https://github.com/KornSW/kSystemExtensions/blob/master/PackageIcon.png?raw=true</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Additional functionality for the .NET-Framework base types</description>
     <releaseNotes></releaseNotes>
