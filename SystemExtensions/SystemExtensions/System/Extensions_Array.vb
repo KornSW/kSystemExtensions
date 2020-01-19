@@ -56,6 +56,36 @@ Namespace System
       extendee = l.ToArray()
     End Sub
 
+    <Extension(), EditorBrowsable(EditorBrowsableState.Always)>
+    Public Function To2dObjectArray(Of T)(input As T()()) As T(,)
+
+      Dim dimension1Size As Integer = input.Length
+      Dim dimension2Size As Integer = 0
+
+      For i1 As Integer = 0 To input.GetUpperBound(0)
+        If (dimension2Size < input(i1).Length) Then
+          dimension2Size = input(i1).Length
+        End If
+      Next
+
+      If (dimension1Size > 0) Then
+        dimension1Size -= 1
+      End If
+
+      If (dimension2Size > 0) Then
+        dimension2Size -= 1
+      End If
+
+      Dim result(dimension1Size, dimension2Size) As T
+      For i1 As Integer = 0 To dimension1Size
+        For i2 As Integer = 0 To dimension2Size
+          result(i1, i2) = input(i1)(i2)
+        Next
+      Next
+
+      Return result
+    End Function
+
   End Module
 
 End Namespace

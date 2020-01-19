@@ -24,6 +24,11 @@ Namespace System.Collections.Generic
       Next
     End Sub
 
+    <Extension(), EditorBrowsable(EditorBrowsableState.Always)>
+    Public Function To2dObjectArray(Of T)(input As IEnumerable(Of T())) As T(,)
+      Return ExtensionsForArray.To2dObjectArray(Of T)(input.ToArray())
+    End Function
+
   End Module
 
 End Namespace
