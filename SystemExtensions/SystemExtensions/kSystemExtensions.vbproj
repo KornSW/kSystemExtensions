@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="%28internal%29\CrossAppDomainActionProxy.vb" />
     <Compile Include="%28internal%29\CrossAppDomainFuncProxy.vb" />
+    <Compile Include="System\Text\Base32Encoding.vb" />
     <Compile Include="Microsoft\Win32\Extensions_RegistryKey.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -172,6 +173,7 @@
     <Compile Include="System\Xml\Extensions_Xml.vb" />
     <Compile Include="System\Xml\Serialization\Extensions_XmlSerializer.vb" />
     <Compile Include="System\[GlobalMethods].vb" />
+    <Compile Include="System\Uid64.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
