@@ -18,8 +18,8 @@
   </metadata>
   <files>
     <!-- https://docs.microsoft.com/en-us/nuget/create-packages/creating-a-package#from-a-convention-based-working-directory -->
-    <file src="SystemExtensions\SystemExtensions\bin\Release\kSystemExtensions.dll" target="lib/{tfm}" />
-    <file src="SystemExtensions\SystemExtensions\bin\Release\kSystemExtensions.xml" target="lib/{tfm}" />
-    <file src="SystemExtensions\SystemExtensions\bin\Release\kSystemExtensions.pdb" target="lib/{tfm}" />
+    <file src="(Stage)\Bin\kSystemExtensions.dll" target="lib/{tfm}" />
+    <file src="(Stage)\Bin\kSystemExtensions.xml" target="lib/{tfm}" />
+    <file src="(Stage)\Bin\kSystemExtensions.pdb" target="lib/{tfm}" />
   </files>
 </package>
