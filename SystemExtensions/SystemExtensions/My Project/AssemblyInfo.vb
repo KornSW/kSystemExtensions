@@ -15,3 +15,4 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyVersion("2.3.7.*")>
 <Assembly: AssemblyInformationalVersion("2.3.7-localbuild")>
+'WARNING: DONT SPECIFY: <Assembly: AssemblyFileVersion(...)> 
