@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="%28internal%29\CrossAppDomainActionProxy.vb" />
     <Compile Include="%28internal%29\CrossAppDomainFuncProxy.vb" />
+    <Compile Include="System\IO\Extensions_DirectoryInfo.vb" />
     <Compile Include="System\Text\Base32Encoding.vb" />
     <Compile Include="Microsoft\Win32\Extensions_RegistryKey.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -170,6 +171,7 @@
     <Compile Include="System\Text\Base64Encoder.vb" />
     <Compile Include="System\Text\Extensions_StringBuilder.vb" />
     <Compile Include="System\Text\HtmlEscapingEncoder.vb" />
+    <Compile Include="System\Threading\ExtensionsForCancellationToken.vb" />
     <Compile Include="System\Xml\Extensions_Xml.vb" />
     <Compile Include="System\Xml\Serialization\Extensions_XmlSerializer.vb" />
     <Compile Include="System\[GlobalMethods].vb" />

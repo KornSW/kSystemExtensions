@@ -12,6 +12,32 @@ Namespace System
   Public Module ExtensionsForArray
 
     <Extension(), EditorBrowsable(EditorBrowsableState.Always)>
+    Public Function SubArray(Of T)(extendee As T(), startIndex As Integer) As T()
+      If (startIndex = 0) Then
+        Return extendee
+      Else
+        Return SubArray(Of T)(extendee, startIndex, extendee.Length - startIndex)
+      End If
+    End Function
+
+    <Extension(), EditorBrowsable(EditorBrowsableState.Always)>
+    Public Function SubArray(Of T)(extendee As T(), startIndex As Integer, length As Integer) As T()
+
+      If (length < 1) Then
+        Return {}
+      ElseIf (startIndex = 0 AndAlso length = extendee.Length) Then
+        Return extendee
+      End If
+
+      Dim newArray(length - 1) As T
+      For i As Integer = 0 To length - 1
+        newArray(i) = extendee(i + startIndex)
+      Next
+
+      Return newArray
+    End Function
+
+    <Extension(), EditorBrowsable(EditorBrowsableState.Always)>
     Public Function ToUntypedList(extendee As Array) As IList
       Dim listType As Type = extendee.GetType().GetItemType().MakeListType()
       Dim listInstance As IList = listType.Activate(Of IList)()

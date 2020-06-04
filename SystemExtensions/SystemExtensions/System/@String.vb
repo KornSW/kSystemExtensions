@@ -782,11 +782,173 @@ Namespace System
 
 #End Region
 
-#Region " Split To Enumerable "
+#Region " Split & Join "
 
     <Extension(), EditorBrowsable(EditorBrowsableState.Always)>
     Public Function Split(extendee As String, separator As String) As IEnumerable(Of String)
       Return New StringSplitEnumerable(extendee, separator)
+    End Function
+
+    <Extension(), EditorBrowsable(EditorBrowsableState.Always)>
+    Public Function SplitEscaped(
+      extendee As String, separator As String,
+      Optional keepBracketsInResult As Boolean = False
+    ) As String()
+
+      Return SplitEscaped(extendee, separator, """", """",, keepBracketsInResult)
+    End Function
+
+    <Extension(), EditorBrowsable(EditorBrowsableState.Always)>
+    Public Function SplitEscaped(extendee As String, separator As String,
+      blockStartBracket As String, blockEndBracket As String, Optional bracketEscapeChar As Char = "\"c,
+      Optional keepBracketsInResult As Boolean = False
+    ) As String()
+
+      Dim ubound As Integer = (extendee.Length - 1)
+      Dim currentIndex As Integer = 0
+      Dim completeTokens As New List(Of String)
+      Dim escapingActive As Boolean = False
+      Dim currentlyInBrackets As Boolean = False
+      Dim currentTokenSb As New StringBuilder
+
+      Do Until (currentIndex > ubound)
+
+        If (Not escapingActive AndAlso extendee(currentIndex) = bracketEscapeChar) Then
+          escapingActive = True
+          'initiates a suspended write (only if escape was effective)
+          currentIndex += 1
+        Else
+
+          If (Not currentlyInBrackets) Then
+
+            If ((currentIndex + blockStartBracket.Length - 1 <= ubound) AndAlso extendee.Substring(currentIndex, blockStartBracket.Length) = blockStartBracket) Then
+
+              If (Not escapingActive) Then
+                'BLOCK START
+                currentlyInBrackets = True
+                If (keepBracketsInResult) Then
+                  currentTokenSb.Append(blockStartBracket)
+                End If
+              Else
+                currentTokenSb.Append(blockStartBracket)
+              End If
+              currentIndex += blockStartBracket.Length
+
+            ElseIf ((currentIndex + separator.Length - 1 <= ubound) AndAlso extendee.Substring(currentIndex, separator.Length) = separator) Then
+
+              If (Not escapingActive) Then
+                'SPLIT
+                completeTokens.Add(currentTokenSb.ToString())
+                currentTokenSb.Clear()
+              Else
+                currentTokenSb.Append(separator)
+              End If
+              currentIndex += separator.Length
+
+            Else
+
+              If (escapingActive AndAlso Not extendee(currentIndex) = bracketEscapeChar) Then
+                'RE-APPLY SUSPENDED ESCAPE CHAR, BECAUSE ESCAPING WAS NOT INTENDED
+                currentTokenSb.Append(bracketEscapeChar)
+              End If
+              'APPLY REGULAR CHAR
+              currentTokenSb.Append(extendee(currentIndex))
+              currentIndex += 1
+
+            End If
+
+          Else 'IF CURRENTLY IN BRACKETS
+
+            If ((currentIndex + blockEndBracket.Length - 1 <= ubound) AndAlso extendee.Substring(currentIndex, blockEndBracket.Length) = blockEndBracket) Then
+              Dim nextComesSeparator = ((currentIndex + separator.Length <= ubound) AndAlso extendee.Substring(currentIndex + 1, separator.Length) = separator)
+
+              If (Not escapingActive AndAlso (currentIndex = ubound OrElse nextComesSeparator)) Then
+                'BLOCK END
+                currentlyInBrackets = False
+                If (keepBracketsInResult) Then
+                  currentTokenSb.Append(blockEndBracket)
+                End If
+              Else
+                currentTokenSb.Append(blockEndBracket)
+              End If
+              currentIndex += blockEndBracket.Length
+
+            Else
+
+              If (escapingActive AndAlso Not extendee(currentIndex) = bracketEscapeChar) Then
+                'RE-APPLY SUSPENDED ESCAPE CHAR, BECAUSE ESCAPING WAS NOT INTENDED
+                currentTokenSb.Append(bracketEscapeChar)
+              End If
+
+              'APPLY REGULAR CHAR
+              currentTokenSb.Append(extendee(currentIndex))
+              currentIndex += 1
+
+            End If
+
+          End If
+
+          escapingActive = False 'reset escaping flag
+        End If
+      Loop
+
+      If (escapingActive) Then
+        'ESCAPING WAS NOT INTENDED (THE ESCAPE CHAR WAS THE LAST ONE)
+        currentTokenSb.Append(bracketEscapeChar)
+      End If
+
+      If (currentTokenSb.Length > 0) Then
+        'complete the last token
+        completeTokens.Add(currentTokenSb.ToString())
+      End If
+
+      Return completeTokens.ToArray()
+    End Function
+
+    <Extension(), EditorBrowsable(EditorBrowsableState.Always)>
+    Public Function JoinEscaped(
+      extendee As String(), separator As String,
+      Optional generateBracketsAlsoIfNotNecessary As Boolean = False
+    ) As String
+
+      Return JoinEscaped(extendee, separator, """", """",, generateBracketsAlsoIfNotNecessary)
+    End Function
+
+    <Extension(), EditorBrowsable(EditorBrowsableState.Always)>
+    Public Function JoinEscaped(extendee As String(), separator As String,
+      blockStartBracket As String, blockEndBracket As String, Optional bracketEscapeChar As Char = "\"c,
+      Optional generateBracketsAlsoIfNotNecessary As Boolean = False
+    ) As String
+
+      Dim sb As New StringBuilder
+      Dim isFirst As Boolean = True
+
+      For Each token In extendee
+
+        If (isFirst) Then
+          isFirst = False
+        Else
+          sb.Append(separator)
+        End If
+        Dim writeBrackets = (generateBracketsAlsoIfNotNecessary OrElse token.Contains(separator))
+        token = token.Replace(blockStartBracket, CStr(bracketEscapeChar) + blockStartBracket)
+
+        If (writeBrackets) Then
+          sb.Append(blockStartBracket)
+          If (blockStartBracket <> blockEndBracket) Then
+            token = token.Replace(blockEndBracket, CStr(bracketEscapeChar) + blockEndBracket)
+          End If
+        End If
+
+        sb.Append(token)
+
+        If (writeBrackets) Then
+          sb.Append(blockEndBracket)
+        End If
+
+      Next
+
+      Return sb.ToString()
     End Function
 
 #Region " Enumerable "
@@ -963,6 +1125,104 @@ Namespace System
       Next
 
       Return result
+    End Function
+
+    <Extension(), EditorBrowsable(EditorBrowsableState.Always)>
+    Public Function FirstToUpper(extendee As String) As String
+      If (String.IsNullOrWhiteSpace(extendee) OrElse Not Char.IsLetter(extendee(0))) Then
+        Return String.Empty
+      End If
+      If (Char.IsLower(extendee(0))) Then
+        extendee = Char.ToUpper(extendee(0)) + extendee.Substring(1)
+      End If
+      Return extendee
+    End Function
+
+    <Extension(), EditorBrowsable(EditorBrowsableState.Always)>
+    Public Function FirstToLower(extendee As String) As String
+      If (String.IsNullOrWhiteSpace(extendee) OrElse Not Char.IsLetter(extendee(0))) Then
+        Return String.Empty
+      End If
+      If (Char.IsUpper(extendee(0))) Then
+        extendee = Char.ToLower(extendee(0)) + extendee.Substring(1)
+      End If
+      Return extendee
+    End Function
+
+    <Extension(), EditorBrowsable(EditorBrowsableState.Always)>
+    Public Function ToCamelCase(extendee As String) As String
+      If (String.IsNullOrWhiteSpace(extendee)) Then
+        Return String.Empty
+      End If
+      Dim sb As New StringBuilder
+      Dim state As Integer = 0 '0=outside,1=alphaword,2=numericword
+      For Each ch In extendee
+        Select Case state
+          Case 0
+            If (Char.IsLetter(ch)) Then
+              sb.Append(Char.ToUpper(ch))
+              state = 1
+            ElseIf (Char.IsDigit(ch)) Then
+              sb.Append(ch)
+              state = 2
+            End If
+          Case 1
+            If (Char.IsDigit(ch)) Then
+              sb.Append(ch)
+              state = 2
+            ElseIf (Char.IsLetter(ch)) Then
+              sb.Append(Char.ToLower(ch))
+            Else
+              state = 0
+            End If
+          Case 2
+            If (Char.IsLetter(ch)) Then
+              sb.Append(Char.ToUpper(ch))
+              state = 1
+            ElseIf (Char.IsDigit(ch)) Then
+              sb.Append(ch)
+            Else
+              state = 0
+            End If
+        End Select
+      Next
+      Return sb.ToString
+    End Function
+
+    <Extension(), EditorBrowsable(EditorBrowsableState.Always)>
+    Public Function ToShortcutString(extendee As String) As String
+      If (String.IsNullOrWhiteSpace(extendee)) Then
+        Return String.Empty
+      End If
+      Dim sb As New StringBuilder
+      Dim state As Integer = 0 '0=outside,1=alphaword,2=numericword
+      For Each ch In extendee
+        Select Case state
+          Case 0
+            If (Char.IsLetter(ch)) Then
+              sb.Append(Char.ToUpper(ch))
+              state = 1
+            ElseIf (Char.IsDigit(ch)) Then
+              sb.Append(ch)
+              state = 2
+            End If
+          Case 1
+            If (Char.IsDigit(ch)) Then
+              sb.Append(ch)
+              state = 2
+            ElseIf (Not Char.IsLetter(ch)) Then
+              state = 0
+            End If
+          Case 2
+            If (Char.IsLetter(ch)) Then
+              sb.Append(Char.ToUpper(ch))
+              state = 1
+            ElseIf (Not Char.IsDigit(ch)) Then
+              state = 0
+            End If
+        End Select
+      Next
+      Return sb.ToString
     End Function
 
   End Module
