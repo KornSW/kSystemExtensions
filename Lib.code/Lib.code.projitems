@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>cf0a161a-99ba-4f01-af5e-16c6fcbc85ae</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Lib</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)%28internal%29\CrossAppDomainActionProxy.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)%28internal%29\CrossAppDomainFuncProxy.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft\Win32\Extensions_RegistryKey.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\%28Exceptions%29\NotAuthenticatedException.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\%28Extensions%29.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\%40Assembly.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\%40Byte.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\%40Exception.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\%40String.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\%40Type.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\%40Uri.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\BitMask.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Collections\Extensions_IList.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Collections\Generic\%40IIDictionary.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Collections\Generic\EnumerableProxy.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Collections\Generic\Extensions_IEnumerable.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Collections\Generic\Extensions_IList.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Collections\Generic\GenericKeyDictionary.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Collections\Generic\IHasKey.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Collections\Generic\IQueryableSet.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Collections\Generic\IQueryableSetContainer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Collections\Generic\ListWithKey.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Collections\Generic\ObservableSet.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Collections\Generic\SortableList%28Of %29.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Collections\Generic\ThreadSafeQueue.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Collections\KeyValuePair.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Collections\Specialized\%40NameValueCollection.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\ComponentModel\EnumDisplayNameAttribute.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\ComponentModel\EnumDisplayNameAttributeConverter.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\ComponentModel\EnumResourceConverter.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\ComponentModel\ExtendedEnumConverterBase.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\ComponentModel\Extensions_TypeConverter.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\DateSerialisationMode.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Diagnostics\Extensions_StackTrace.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Drawing\%28Extensions%29.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Drawing\%40Byte.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Drawing\%40Image.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Drawing\BestMatchingColor.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Drawing\CirclePaintingExtension.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Drawing\Extensions_Font.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Drawing\Extensions_Graphics.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Extensions_AppDomain.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Extensions_Array.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Extensions_Boolean.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Extensions_Char.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Extensions_DateTime.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Extensions_DayOfWeek.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Extensions_Decimal.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Extensions_Double.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Extensions_Generic.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Extensions_HexString.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Extensions_Integer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Extensions_Long.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Extensions_Object.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Extensions_Single.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Extensions_Type.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Factory.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Globalization\GermanPublicHoliday.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Globalization\GermanRegion.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\HexString.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\ICache.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\IDisposableEx.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Importance.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\InvalidStateException.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\IO\Extensions_DirectoryInfo.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\IO\Extensions_FileInfo.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\IO\Extensions_Stream.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\IO\Extensions_TextReader.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\IO\ISerializable.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\ISealable.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\LineBreakFormat.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Linq\Expressions\Extensions_Expression.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Math\DimenstionDifference.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Net\Extensions_IpAddress.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Net\Sockets\Extensions_TcpClient.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Percent.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\PublicHolidayCalculator.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Reflection\ExtensionMethods.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Reflection\Extensions_MethodBase.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Reflection\Extensions_MethodInfo.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Reflection\Extensions_PropertyInfo.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Resources\Extensions_ResourceManager.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Security\Cryptography\TrippleDesEncryptor.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Security\Extensions_SecureString.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Security\MD5Helper.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Text\Base32Encoding.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Text\Base64Encoder.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Text\Extensions_StringBuilder.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Text\HtmlEscapingEncoder.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Threading\ExtensionsForCancellationToken.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Uid64.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Xml\Extensions_Xml.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\Xml\Serialization\Extensions_XmlSerializer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)System\[GlobalMethods].vb" />
+  </ItemGroup>
+</Project>

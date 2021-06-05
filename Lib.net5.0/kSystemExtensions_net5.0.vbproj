@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace></RootNamespace>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>kSystemExtensions</AssemblyName>
+    <Authors>KornSW</Authors>
+    <Copyright>KornSW</Copyright>
+    <Version>3.0.0</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>kSystemExtensions.xml</DocumentationFile>
+    <DefineConstants>NET5</DefineConstants>
+    <OutputPath>..\..\(Stage)\Bin\net5.0\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>kSystemExtensions.xml</DocumentationFile>
+    <OutputPath>..\..\(Stage)\Bin\net5.0\</OutputPath>
+  </PropertyGroup>
+
+  <Import Project="..\Lib.code\Lib.code.projitems" Label="Shared" />
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
+    <PackageReference Include="System.Diagnostics.EventLog" Version="5.0.1" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+  </ItemGroup>
+
+</Project>
