@@ -20,7 +20,7 @@
       <group targetFramework="net5.0">
         <dependency id="Microsoft.Win32.Registry" version="[5.0.0,5.9999]" />
         <dependency id="System.Diagnostics.EventLog" version="[5.0.1,5.9999]" />
-        <dependency id="SystemDrawing.Common" version="[5.0.2,5.9999]" />
+        <dependency id="System.Drawing.Common" version="[5.0.2,5.9999]" />
       </group>
     </dependencies>
   </metadata>
